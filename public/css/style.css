@@ -1,0 +1,4 @@
+body { padding: 20px; }
+
+div.pass { color: green; }
+div.fail { color: red; }

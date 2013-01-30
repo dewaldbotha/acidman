@@ -2,13 +2,13 @@
 return array(
     'router' => array(
         'routes' => array(
-            'admin' => array(
+            'acidman' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route' => '/admin',
+                    'route' => '/',
                     'defaults' => array(
-                        '__NAMESPACE__' => 'Admin\Controller',
-                        'controller' => 'Index',
+                        '__NAMESPACE__' => 'AcidMan\Controller',
+                        'controller' => 'Installer',
                         'action' => 'index',
                     ),
                 ),
@@ -17,7 +17,7 @@ return array(
                     'default' => array(
                         'type' => 'Segment',
                         'options' => array(
-                            'route' => '/[:controller[/:action]]',
+                            'route' => '/acidman/[:controller[/:action]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -50,7 +50,7 @@ return array(
     */
     'controllers' => array(
         'invokables' => array(
-            'Admin\Controller\Index' => 'Admin\Controller\IndexController'
+            'AcidMan\Controller\Installer' => 'AcidMan\Controller\InstallerController'
         ),
     ),
     'view_manager' => array(
@@ -61,7 +61,7 @@ return array(
         'exception_template' => 'error/index',
         'template_map' => array(
             'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
-            'admin/index/index' => __DIR__ . '/../view/admin/index/index.phtml',
+            'acidman/index/index' => __DIR__ . '/../view/acidman/index/index.phtml',
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml',
         ),

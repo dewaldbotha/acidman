@@ -2,8 +2,7 @@
 return array(
     // Available Modules
     'modules' => array(
-        'Application',
-        'Admin',
+        'AcidMan',
     ),
 
     // These are various options for the listeners attached to the ModuleManager

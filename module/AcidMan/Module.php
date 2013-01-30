@@ -1,9 +1,11 @@
 <?php
 //module bootstrap
-namespace Admin;
+namespace AcidMan;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use AcidMan\Service\ServiceConfiguration;
+use AcidMan\Service\InstallerService;
 
 class Module
 {
@@ -31,4 +33,18 @@ class Module
             ),
         );
     }
+    
+        // Add this method:
+    public function getServiceConfig()
+    {
+        return array(
+            'invokables' => array(
+                'Installer' => 'AcidMan\Service\InstallerService',
+            ),
+            'aliases' => array(
+                'Database' => 'Zend\Db\Adapter\Adapter',
+            ),
+        );
+    }
+    
 }
