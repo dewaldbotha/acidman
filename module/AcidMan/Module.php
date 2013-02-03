@@ -42,7 +42,7 @@ class Module
                 'Installer' => 'AcidMan\Service\InstallerService',
             ),
             'aliases' => array(
-                'Database' => 'Zend\Db\Adapter\Adapter',
+                'AssetsDB' => 'Zend\Db\Adapter\Adapter',
             ),
         );
     }

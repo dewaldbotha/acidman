@@ -2,29 +2,28 @@
 return array(
     'router' => array(
         'routes' => array(
-            'acidman' => array(
+            'home' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route' => '/',
+                    'route' => '/acidman/',
                     'defaults' => array(
                         '__NAMESPACE__' => 'AcidMan\Controller',
-                        'controller' => 'Installer',
+                        'controller' => 'Home',
                         'action' => 'index',
                     ),
                 ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'default' => array(
-                        'type' => 'Segment',
-                        'options' => array(
-                            'route' => '/acidman/[:controller[/:action]]',
-                            'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                            'defaults' => array(
-                            ),
-                        ),
+           ),
+           'installer' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/acidman/installer[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'AcidMan\Controller\Installer',
+                        'action'     => 'index',
                     ),
                 ),
             ),
@@ -50,7 +49,8 @@ return array(
     */
     'controllers' => array(
         'invokables' => array(
-            'AcidMan\Controller\Installer' => 'AcidMan\Controller\InstallerController'
+            'AcidMan\Controller\Home'       => 'AcidMan\Controller\HomeController',
+            'AcidMan\Controller\Installer'  => 'AcidMan\Controller\InstallerController'
         ),
     ),
     'view_manager' => array(
