@@ -10,7 +10,8 @@
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
                         ->prependStylesheet($this->basePath() . '/css/style.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+                        ->appendStylesheet('http://fonts.googleapis.com/css?family=Text+Me+One') ?>
 
         <!-- Scripts -->
         <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
@@ -19,6 +20,16 @@
 
     </head>
     <body>
+        <header>
+            <h1>AcidMan</h1>            
+        </header>
+        
+        <section>
         <?php echo $this->content; ?>
+        </section>
+        
+        <footer>
+            &copy; <?php echo date('Y'); ?>
+        </footer>
     </body>
 </html>

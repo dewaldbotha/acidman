@@ -1,5 +1,11 @@
-<h1>Installer Home</h1>
-
 <div>
-    <p>You passed all the requirements.  <a href="">Continue to step 2</a></p>
+    <?php if ($this->isValidEnvironment):?>
+        <p>Congratulations!!!</p>
+        <p class="success">You passed all the requirements.</p>
+        <p><a href="<?php echo $this->url('installer', array('action' => 'step2'));?>">Continue to step 2</a></p>
+    <?php else:?>
+        <p>The following requirement(s) could not be met:</p>
+        <?php echo $this->htmlList($this->failures, false, array('class'=>'error'));?>
+        <p>Please remedy and <a href="<?php echo $this->url('installer', array('action' => 'index'));?>">click here</a> to re-validate.</p>
+    <?php endif; ?>
 </div>

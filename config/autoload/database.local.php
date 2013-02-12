@@ -8,8 +8,8 @@ return array(
     'db' => array(
         'driver'         => 'pdo',
         'dsn'            => 'mysql:dbname=zf2;host=localhost',
-        'username'       => 'root',
-        'password'       => 'roots',
+        'username'       => '',
+        'password'       => '',
         'driver_options' => array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"),
     ),
 );

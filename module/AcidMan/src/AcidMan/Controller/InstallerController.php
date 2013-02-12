@@ -7,9 +7,15 @@ class InstallerController extends AbstractController
     public function indexAction()
     {
         $installer = $this->getServiceLocator()->get('Installer');
-        $results = $installer->isValidEnvironment();
+        
         return new ViewModel(array(
-            'results' => $results   
+            'isValidEnvironment' => $installer->isValidEnvironment(),
+            'failures' => $installer->getFailures(),   
         ));
+    }
+    
+    public function step2Action() 
+    {
+        return new ViewModel(array());
     }
 }

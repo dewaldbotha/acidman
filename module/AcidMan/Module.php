@@ -38,8 +38,16 @@ class Module
     public function getServiceConfig()
     {
         return array(
+            'factories' => array(
+                'Installer' => function($serviceManager) {
+                    $installer = new Service\InstallerService;
+                    $dbAdapter = $serviceManager->get('AssetsDB');
+                    $dbInstallAdapter = Service\Installer\DBAdapterFactory::getDbInstallerAdapter($dbAdapter);
+                    $installer->setDBInstallAdapter($dbInstallAdapter);
+                    return $installer;
+                }
+            ),
             'invokables' => array(
-                'Installer' => 'AcidMan\Service\InstallerService',
             ),
             'aliases' => array(
                 'AssetsDB' => 'Zend\Db\Adapter\Adapter',

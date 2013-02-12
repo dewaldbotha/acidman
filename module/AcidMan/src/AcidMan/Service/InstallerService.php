@@ -18,6 +18,8 @@ class InstallerService extends AbstractService
     
     protected $failed = array();
     
+    protected $installerDBAdapter = NULL;
+    
     public function isValidEnvironment() 
     {
         $result = $this->checkValidPHPVersion() &&
@@ -38,17 +40,11 @@ class InstallerService extends AbstractService
     
     public function checkValidDBDrivers()
     {
-        try {
-            $db = $this->getServiceLocator()->get('AssetsDB');
-            if (!in_array($db->getDriver()->getConnection()->getDriverName(), $this->getSupportedDrivers())) {
-                $this->addRequirementFail('dbdrivers', 'Driver not availble or supported (only '.implode(',',$this->getSupportedDrivers()).')');
-                return false;
-            }
-            return true;    
-        } catch (\Exception $e) {
-            throw new Exception\InstallerException('Database adapter not initialised',1);
+        if (!($this->getDBInstallerAdapter()->getAdapter() instanceof \Zend\Db\Adapter\Adapter)) {
+            $this->addRequirementFail('dbdrivers', 'Driver not availble or supported (see DbAdapterFactory for supported types)');
+            return false;
         }
-        
+        return true;   
     }
     
     public function checkValidDataPath()
@@ -91,4 +87,16 @@ class InstallerService extends AbstractService
     {
         return $this->failed;
     }
+    
+    public function setDBInstallAdapter($adapter)
+    {
+        $this->installerDBAdapter = $adapter;
+        return $this;
+    }
+    
+    public function getDBInstallerAdapter()
+    {
+        return $this->installerDBAdapter;
+    }
+    
 }

@@ -1,4 +1,7 @@
 <?php
+date_default_timezone_set('Africa/Johannesburg');
+
+
 /**
  * Autoloader - No one likes things to be complicated....
  */

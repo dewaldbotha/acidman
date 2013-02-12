@@ -6,6 +6,7 @@ use Zend\Mvc\Router\Http\TreeRouteStack as HttpRouter;
 use AcidMan\Service\InstallerService;
 use PHPUnit_Framework_TestCase;
 
+
 class InstallerServiceTest extends PHPUnit_Framework_TestCase
 {
     protected $fixture = null;
@@ -32,15 +33,6 @@ class InstallerServiceTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(is_bool($this->fixture->checkValidPHPVersion()));
     }
     
-    public function testCheckInvalidPHPEnvironmentUpdatesFailuresArray() 
-    {
-        //$stub = $this->getMock("InstallerService");
-        //$stub->expects($this->any())
-        //     ->method('getMinimunRequiredPHPVersion')
-        //     ->will($this->returnValue('5.2'));
-             
-        //var_dump($stub->checkValidPHPVersion());
-    }
     
     public function testCheckValidDBDriversReturnsBool()
     {

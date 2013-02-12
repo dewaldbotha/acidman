@@ -71,7 +71,9 @@ class Bootstrap
     protected static function initAutoloader()
     {
         $vendorPath = static::findParentPath('vendor');
-
+        
+        set_include_path(get_include_path().PATH_SEPARATOR.$vendorPath);
+        
         if (is_readable($vendorPath . '/autoload.php')) {
             $loader = include $vendorPath . '/autoload.php';
         } else {
@@ -91,8 +93,10 @@ class Bootstrap
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/' . __NAMESPACE__,
                 ),
+                'fallback_autoloader' => true,
             ),
         ));
+        
     }
 
     protected static function findParentPath($path)
